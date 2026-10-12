@@ -1,0 +1,89 @@
+/* manjulika.com: a friendly ghost in your chats. Paper by day, the chat at night. */
+:root {
+  --paper: #f4f5f7;
+  --ink: #1b1d33;
+  --muted: #5d6178;
+  --night: #1f2142;
+  --moon: #e9e7ff;
+  --you: #ffffff;
+  --lantern: #f2a63b;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #12132a; --ink: #ecebf7; --muted: #a3a6c0; --night: #1c1e3d; }
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+a:hover { color: var(--lantern); }
+a:focus-visible { outline: 2px solid var(--lantern); outline-offset: 3px; border-radius: 2px; }
+
+.top { max-width: 1080px; margin: 0 auto; padding: 28px 24px; display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -0.01em; }
+.ghost { width: 26px; height: 30px; flex: none; }
+.ghost path { fill: var(--ink); }
+.ghost circle { fill: var(--lantern); }
+
+.hero { max-width: 1080px; min-height: calc(100vh - 220px); margin: 0 auto; padding: 24px 24px 56px; display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: center; }
+h1 {
+  margin: 0 0 20px;
+  font-size: clamp(42px, 5.6vw, 72px);
+  line-height: 1.02;
+  font-weight: 700;
+  font-variation-settings: "wdth" 88, "opsz" 72;
+  letter-spacing: -0.03em;
+}
+.sub { margin: 0 0 16px; max-width: 30em; color: var(--muted); font-size: 20px; }
+.also { margin: 0; max-width: 30em; color: var(--muted); }
+
+/* The chat, at night. */
+.chat {
+  background: var(--night);
+  border-radius: 28px;
+  padding: 28px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 30px 60px -30px rgba(27, 29, 51, 0.55);
+}
+.msg {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: appear 0.45s ease-out forwards;
+}
+.msg.you { align-self: flex-end; background: var(--you); color: #1b1d33; border-bottom-right-radius: 6px; }
+.msg.her { align-self: flex-start; background: var(--moon); color: #1b1d33; border-bottom-left-radius: 6px; box-shadow: 0 0 24px rgba(233, 231, 255, 0.18); }
+.msg:nth-child(1) { animation-delay: 0.3s; }
+.msg:nth-child(2) { animation-delay: 1.2s; }
+.msg:nth-child(3) { animation-delay: 2.2s; }
+.msg:nth-child(4) { animation-delay: 3.1s; }
+.msg:nth-child(5) { animation-delay: 4s; }
+@keyframes appear { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .msg { opacity: 1; transform: none; animation: none; } }
+
+.note { max-width: 1080px; margin: 0 auto; padding: 0 24px 40px; color: var(--muted); }
+footer { max-width: 1080px; margin: 0 auto; padding: 24px 24px 48px; display: flex; gap: 24px; flex-wrap: wrap; color: var(--muted); font-size: 15px; }
+
+/* Privacy policy */
+.policy { max-width: 680px; margin: 0 auto; padding: 24px 24px 56px; }
+.policy h1 { font-size: clamp(36px, 5vw, 48px); margin-bottom: 4px; }
+.policy h2 { font-size: 20px; font-weight: 650; margin: 30px 0 6px; letter-spacing: -0.01em; }
+.policy p { margin: 0 0 14px; }
+.revised { color: var(--muted); margin-bottom: 28px !important; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 16px; min-height: 0; }
+  .chat { max-width: 460px; }
+}
