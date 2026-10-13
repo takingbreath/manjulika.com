@@ -1,4 +1,4 @@
-/* manjulika.com: the invite form. Number, then a 4-digit code by SMS, then "queued". No other scripts needed. */
+/* manjulika.com: the invite form. Number, then a 4-digit code by SMS, then "on the list". No other scripts needed. */
 (function () {
   var form = document.getElementById('invite-form');
   if (!form) return;
@@ -27,6 +27,25 @@
   var failedAt = 0; // when the desk last failed to send an SMS to `phone`
   var codeShownAt = 0;
   var COOLDOWN_TEXT = 'Wait a minute before asking for a new code.';
+  var titleEl = document.querySelector('[data-title]');
+  var titleText = titleEl ? titleEl.textContent : '';
+  var doneTitle = form.querySelector('[data-done-title]');
+  var doneTitleText = doneTitle.textContent;
+
+  // The page remembers you. This tab keeps the number and its code time, so a visit to the home page
+  // does not cost a new SMS. This browser keeps only a masked number after you join, so the page shows
+  // your place on the list instead of the form.
+  var KEY = 'manjulika-invite';
+  var JOIN_LIFE = 180 * 24 * 3600 * 1000;
+  function store(kind) { try { var s = window[kind]; s.getItem(KEY); return s; } catch (e) { return null; } }
+  var tabStore = store('sessionStorage');
+  var keepStore = store('localStorage');
+  function read(s) { try { return s ? JSON.parse(s.getItem(KEY) || 'null') : null; } catch (e) { return null; } }
+  function write(s, value) {
+    try { if (s) { if (value) s.setItem(KEY, JSON.stringify(value)); else s.removeItem(KEY); } } catch (e) { /* storage full or blocked */ }
+  }
+  var resendAt = 0;
+  function saveTab() { write(tabStore, { phone: phone, sentAt: sentAt, resendAt: resendAt }); }
 
   function normalise(raw) {
     var d = String(raw || '').replace(/\D/g, '');
@@ -37,11 +56,23 @@
   function masked(d) { return '+91 ' + d.slice(0, 2) + 'xxx xx' + d.slice(7); }
   function nowMs() { return Date.now(); }
 
-  function show(name) {
+  // quiet: put the step back after a page load, without moving focus.
+  function show(name, quiet) {
     if (name === 'code' && !steps.code.classList.contains('is-on')) codeShownAt = nowMs();
     Object.keys(steps).forEach(function (k) { steps[k].classList.toggle('is-on', k === name); });
+    if (quiet) return;
     var target = steps[name].querySelector('input') || steps[name].querySelector('[tabindex="-1"]');
     if (target) target.focus();
+  }
+  // On the list: the page headline turns into the promise.
+  function showDone(maskedNumber, already, quiet) {
+    clearInterval(cooldown);
+    doneTitle.textContent = already ? 'You are already on the list.' : doneTitleText;
+    var num = form.querySelector('[data-done-number]');
+    if (num) num.textContent = maskedNumber || 'you';
+    if (titleEl) titleEl.textContent = 'Consider it done.';
+    document.body.classList.add('is-joined');
+    show('done', quiet);
   }
   // err: 'input' marks the field as wrong; 'wait' is a limit, not a typing mistake.
   function note(step, text, err) {
@@ -65,6 +96,8 @@
   function startCooldown(seconds) {
     clearInterval(cooldown);
     var left = Math.max(1, Math.round(seconds || 60));
+    resendAt = nowMs() + left * 1000;
+    saveTab();
     resendBtn.disabled = true;
     waitEl.textContent = 'in ' + left + ' s';
     cooldown = setInterval(function () {
@@ -178,6 +211,7 @@
         // Same number, and its code is still alive: no new SMS needed.
         note(steps.phone, '');
         note(steps.code, 'Use the code I already sent.');
+        saveTab();
         show('code');
         return;
       }
@@ -196,9 +230,9 @@
         inFlight = false;
         busy(steps.code, false);
         if (res.ok) {
-          if (res.body.already) form.querySelector('[data-done-title]').textContent = 'You are already on the list.';
-          clearInterval(cooldown);
-          show('done');
+          write(tabStore, null);
+          write(keepStore, { masked: masked(phone), at: nowMs() });
+          showDone(masked(phone), !!res.body.already);
         } else if (res.status === 429) {
           note(steps.code, errorText(res, 'Too many tries. Try again later.'), 'wait');
           codeInput.focus();
@@ -217,18 +251,51 @@
     }
   });
 
-  // On the join page the number field takes the cursor at once, on devices with a pointer (no phone keyboard pop-up).
-  if (form.hasAttribute('data-autofocus') && window.matchMedia('(pointer: fine)').matches && !location.hash) {
-    phoneInput.focus({ preventScroll: true });
+  // Back on the page: show the list place, or the open code, or the number typed before.
+  var kept = read(keepStore);
+  var tab = read(tabStore);
+  var tabPhone = tab ? normalise(tab.phone) : '';
+  if (kept && kept.masked && nowMs() - (+kept.at || 0) < JOIN_LIFE) {
+    showDone(String(kept.masked), false, true);
+  } else if (tabPhone && +tab.sentAt && nowMs() - tab.sentAt < CODE_LIFE) {
+    phone = tabPhone;
+    sentAt = +tab.sentAt;
+    codeSent(false);
+    var wait = Math.ceil(((+tab.resendAt || 0) - nowMs()) / 1000);
+    if (wait > 0) { startCooldown(wait); resendAt = +tab.resendAt; saveTab(); } else resendBtn.disabled = false;
+    show('code', true);
+  } else if (tabPhone) {
+    phoneInput.value = tabPhone;
+  }
+
+  // On the join page the open field takes the cursor at once, on devices with a pointer (no phone keyboard pop-up).
+  var open = form.querySelector('.step.is-on input');
+  if (open && form.hasAttribute('data-autofocus') && window.matchMedia('(pointer: fine)').matches && !location.hash) {
+    open.focus({ preventScroll: true });
   }
 
   resendBtn.addEventListener('click', function () { if (!resendBtn.disabled) requestCode(steps.code); });
   form.querySelector('[data-change]').addEventListener('click', function () {
+    write(tabStore, null);
     note(steps.code, '');
     phoneInput.value = phone;
     show('phone');
     phoneInput.select();
   });
+  var another = form.querySelector('[data-another]');
+  if (another) {
+    another.addEventListener('click', function () {
+      write(keepStore, null);
+      write(tabStore, null);
+      phone = '';
+      sentAt = 0;
+      phoneInput.value = '';
+      note(steps.phone, '');
+      if (titleEl) titleEl.textContent = titleText;
+      document.body.classList.remove('is-joined');
+      show('phone');
+    });
+  }
   var retryBtn = form.querySelector('[data-retry]');
   if (retryBtn) {
     retryBtn.addEventListener('click', function () {

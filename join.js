@@ -27,9 +27,14 @@
       clearTimeout(idle);
       idle = setTimeout(function () { if (!form.querySelector('.step-done.is-on')) typing = false; }, 2500);
     });
-    // When the invite is queued, she looks up at you and stays.
-    new MutationObserver(function () {
-      if (form.querySelector('.step-done.is-on')) { clearTimeout(timer); typing = true; look('you'); }
-    }).observe(form, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    // On the list, she looks up at you and stays. With another number, she goes back to the form.
+    var held = false;
+    var check = function () {
+      var done = !!form.querySelector('.step-done.is-on');
+      if (done && !held) { held = true; clearTimeout(timer); typing = true; look('you'); }
+      else if (!done && held) { held = false; typing = false; look('down'); glance(); }
+    };
+    new MutationObserver(check).observe(form, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    check();
   }
 })();

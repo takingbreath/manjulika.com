@@ -61,8 +61,8 @@
     --dot: #3a3672;
   }
   /* A soft lavender glow lifts her off the dark page; the floor shadow goes deeper. */
-  .hero-stage::before {
-    content: ""; position: absolute; left: 6%; right: 6%; top: 4%; bottom: 14%; z-index: 0; pointer-events: none;
+  .float::before {
+    content: ""; position: absolute; left: -6%; right: -6%; top: 0; bottom: 6%; z-index: -1; pointer-events: none;
     background: radial-gradient(closest-side, rgba(199, 194, 243, 0.22), rgba(199, 194, 243, 0) 100%);
   }
   .float { position: relative; z-index: 1; }
@@ -136,25 +136,29 @@ p { margin: 0; }
 .link { background: none; border: 0; padding: 10px 2px; font: inherit; font-size: 15px; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .link:disabled { color: var(--muted); text-decoration: none; cursor: default; }
 
-/* 1. Hero */
+/* 1. Hero: the headline runs behind her. Her box starts where "Consider" ends, then moves 14% of her
+   width back over it, so the overlap is the same at every screen size. */
 .hero {
+  --mw: min(520px, calc((100svh - 150px) * 0.6667), 48vw);
   max-width: var(--max);
   margin: 0 auto;
   padding: 8px 24px 48px;
   min-height: calc(100svh - var(--top-h));
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: max-content minmax(0, 1fr);
   align-items: center;
-  gap: 24px;
 }
+.hero-copy { position: relative; z-index: 1; }
 .eyebrow { color: var(--muted); font-size: 18px; margin-bottom: 18px; }
-h1 { font-size: clamp(60px, 9.5vw, 132px); font-weight: 800; line-height: 0.92; letter-spacing: -0.045em; }
+.hero h1 { font-size: min(16vw - 8px, 172px); font-weight: 800; line-height: 0.86; letter-spacing: -0.045em; white-space: nowrap; }
 .lede { max-width: 26em; margin: 26px 0 30px; font-size: 20px; color: var(--muted); }
+/* The lines under the headline wrap inside its width and never widen the column. */
+.lede, .hero-actions { width: 0; min-width: 100%; }
 .lede span { display: block; text-wrap: balance; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 
-.hero-stage { position: relative; display: grid; justify-items: center; align-items: end; }
-.float { width: min(520px, 100%, calc((100svh - 150px) * 0.6667)); animation: float 6s ease-in-out infinite; will-change: transform; }
+.hero-stage { position: relative; z-index: 2; display: grid; justify-items: start; align-items: end; pointer-events: none; }
+.float { width: var(--mw); margin-left: calc(var(--mw) * -0.14); animation: float 6s ease-in-out infinite; will-change: transform; }
 .mascot { position: relative; width: 100%; aspect-ratio: 1024 / 1536; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
 .mascot.lean { transform: rotate(calc(var(--lx, 0) * 2.2deg)) translate(calc(var(--lx, 0) * 8px), calc(var(--ly, 0) * 5px)); }
 .mascot > img { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -173,7 +177,7 @@ h1 { font-size: clamp(60px, 9.5vw, 132px); font-weight: 800; line-height: 0.92; 
   50% { transform: translateY(-14px) rotate(0.8deg); }
 }
 .shadow {
-  width: 46%; height: 26px; margin: -6px auto 0;
+  width: calc(var(--mw) * 0.46); height: 26px; margin: -6px 0 0 calc(var(--mw) * 0.1);
   background: radial-gradient(ellipse at center, rgba(27, 29, 51, 0.22), rgba(27, 29, 51, 0) 70%);
   animation: shadow 6s ease-in-out infinite;
 }
@@ -209,7 +213,7 @@ h1 { font-size: clamp(60px, 9.5vw, 132px); font-weight: 800; line-height: 0.92; 
 .film.is-live .scene.is-on .pose { animation: idle 7s ease-in-out infinite; }
 .film.is-paused .scene.is-on .pose { animation-play-state: paused; }
 .film.is-live .film-bar { display: flex; align-items: center; gap: 18px; margin-top: 18px; }
-.film-tabs { flex: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; max-width: 720px; }
+.film-tabs { flex: 1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; max-width: 760px; }
 .film-tab {
   display: grid; gap: 8px; padding: 10px 2px 8px; border: 0; background: none; cursor: pointer; text-align: left;
   font: inherit; font-size: 15px; font-weight: 600; color: var(--muted);
@@ -246,6 +250,18 @@ h1 { font-size: clamp(60px, 9.5vw, 132px); font-weight: 800; line-height: 0.92; 
   content: ""; display: inline-block; width: 15px; height: 10px; margin-left: 4px; vertical-align: -1px;
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11"><path fill="none" stroke="%2353bdeb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M1 6l3 3 6-7M6 9l1 1 6-7"/></svg>') no-repeat center / contain;
 }
+/* A file in a chat, drawn like WhatsApp's document message */
+.wa .doc {
+  display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: 10px; align-items: center;
+  margin: -2px -5px 7px; padding: 8px 10px 8px 8px; border-radius: 7px; background: rgba(11, 20, 26, 0.06);
+}
+.wa .doc::before {
+  content: attr(data-ext); grid-row: 1 / span 2; display: grid; place-items: center; width: 32px; height: 38px;
+  border-radius: 4px; background: #6b7c85; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.02em;
+}
+.wa .doc-xls::before { background: #1d7044; }
+.wa .doc b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; font-size: 14.5px; }
+.wa .doc small { font-size: 12px; color: var(--wa-time-her); }
 .wa .day { align-self: center; max-width: none; padding: 4px 10px; border-radius: 8px; font-size: 12px; color: var(--wa-day-ink); background: var(--wa-day-bg); box-shadow: none; }
 .wa .typing { position: absolute; left: 0; max-width: none; background: var(--wa-her); padding: 10px 12px; border-top-left-radius: 2px; }
 .wa .typing i { display: inline-block; width: 7px; height: 7px; margin: 0 2px; border-radius: 50%; background: #8696a0; animation: dot 0.9s infinite; }
@@ -351,12 +367,16 @@ h1 { font-size: clamp(60px, 9.5vw, 132px); font-weight: 800; line-height: 0.92; 
 .join-peek[data-look="you"] .look-you { visibility: visible; }
 .join-peek[data-look="you"] .look-down { visibility: hidden; }
 .join-title { font-size: clamp(40px, 7vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; }
-.join-lede { margin: 18px auto 28px; max-width: 24em; font-size: 18px; color: var(--muted); }
+.join-lede { margin: 18px auto 28px; max-width: 24em; font-size: 18px; color: var(--muted); text-wrap: balance; }
 .join-form { text-align: left; max-width: 420px; margin: 0 auto; }
 .join-form .cta { width: 100%; }
 .join-foot { width: calc(min(460px, 100%) - 48px); margin: 24px auto 0; padding: 16px 0 40px; display: flex; gap: 16px; justify-content: center; color: var(--muted); font-size: 15px; border-top: 1px solid var(--hair); }
 .join-page .top { border-bottom-color: var(--hair); }
-.done-back { margin-top: 14px; }
+.done-back { margin-top: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; font-size: 15px; }
+.is-joined .join-lede, .is-joined .step:not(.is-on) { display: none; }
+.step-done { text-align: center; }
+.step-done .done-back { justify-content: center; }
+.is-joined .join-title { margin-bottom: 24px; }
 .invite-form { display: grid; }
 .step { grid-area: 1 / 1; align-self: start; visibility: hidden; }
 .step.is-on { visibility: visible; }
@@ -410,7 +430,7 @@ footer a { display: inline-block; padding: 12px 4px; }
 
 /* Privacy page */
 .policy { max-width: 680px; margin: 0 auto; padding: 24px 24px 56px; }
-.policy h1 { font-size: clamp(36px, 5vw, 48px); margin-bottom: 4px; }
+.policy h1 { font-size: clamp(36px, 5vw, 48px); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 4px; }
 .policy h2 { font-size: 20px; font-weight: 650; margin: 30px 0 6px; letter-spacing: -0.01em; }
 .policy p { margin: 0 0 14px; }
 .policy a { overflow-wrap: anywhere; }
@@ -420,10 +440,13 @@ footer a { display: inline-block; padding: 12px 4px; }
 
 /* Tablets and phones */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 4px; gap: 4px; }
-  .hero-stage { order: -1; }
-  .float { width: min(340px, 74vw, 29svh); }
-  h1 { font-size: clamp(56px, 16vw, 96px); }
+  /* Phones: she floats above the headline, and her hem passes in front of "Consider". */
+  .hero { --mw: min(340px, 74vw, 30svh); grid-template-columns: minmax(0, 1fr); min-height: 0; padding-top: 4px; }
+  .hero-stage { order: -1; justify-items: center; }
+  .float { margin-left: 0; }
+  .shadow { display: none; }
+  .hero-copy { margin-top: calc(var(--mw) * -0.2); }
+  .hero h1 { font-size: clamp(60px, 21.5vw, 120px); }
   .eyebrow { margin-bottom: 10px; }
   .lede { font-size: 18px; margin: 14px 0 18px; }
   .film { padding: 0 16px; margin-top: 28px; }
@@ -459,6 +482,15 @@ footer a { display: inline-block; padding: 12px 4px; }
   .first-stage::before { inset: 90px -24px -30px -24px; }
   .form-links { flex-direction: column; align-items: flex-start; }
   .faq-list summary { font-size: 18px; }
+}
+/* Short phones: a smaller spirit keeps the button in the first screen */
+@media (max-width: 900px) and (max-height: 600px) {
+  .hero { --mw: min(340px, 74vw, 25svh); }
+}
+/* Narrow phones: five names do not fit, so only the playing chat shows its name. The bars stay. */
+@media (max-width: 560px) {
+  .film-tab span { white-space: nowrap; transition: opacity .2s; }
+  .film-tab:not(.is-on) span { opacity: 0; }
 }
 @media (max-width: 380px) {
   .lede { font-size: 16.5px; }

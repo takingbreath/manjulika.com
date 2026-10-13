@@ -187,7 +187,7 @@
     return Math.min(8000, Math.max(3500, words * 170));
   }
 
-  /* The film: four chats that play like a short video when it is on screen. It pauses off screen,
+  /* The film: five chats that play like a short video when it is on screen. It pauses off screen,
      in a hidden tab, while keyboard focus is inside it, or with the pause button. */
   var film = document.getElementById('film');
   if (film) {

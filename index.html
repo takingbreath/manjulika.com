@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.manjulika.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Manjulika | Text me on WhatsApp. Consider it done.</title>
-<meta name="description" content="I am Manjulika, a personal assistant you text on WhatsApp. Tell me once. Consider it done.">
+<meta name="description" content="Your personal assistant on WhatsApp. Text me what you need, and I handle the rest.">
 <link rel="canonical" href="https://manjulika.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manjulika.com/">
 <meta property="og:title" content="Manjulika | Text me on WhatsApp. Consider it done.">
-<meta property="og:description" content="I am Manjulika, a personal assistant you text on WhatsApp. Tell me once. Consider it done.">
+<meta property="og:description" content="Your personal assistant on WhatsApp. Text me what you need, and I handle the rest.">
 <meta property="og:image" content="https://manjulika.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=16">
+<link rel="stylesheet" href="style.css?v=17">
 <link rel="prefetch" href="join/">
 <link rel="prefetch" href="assets/mascot/peek-over-down.webp">
 <link rel="prefetch" href="assets/mascot/peek-over-you.webp">
@@ -83,26 +83,27 @@
     </div>
   </section>
 
-  <!-- 2. What I do: a short film of four chats that plays when it comes into view -->
+  <!-- 2. What I do: a short film of five chats that plays when it comes into view -->
   <section class="does" id="does" aria-labelledby="does-title">
     <header class="section-head">
       <h2 id="does-title">Text me like you text anyone. <span>Then get on with your day.</span></h2>
     </header>
 
-    <div class="film" id="film" role="region" aria-roledescription="carousel" aria-label="Four of my chats">
+    <div class="film" id="film" role="region" aria-roledescription="carousel" aria-label="Five of my chats">
       <div class="film-bar">
         <button type="button" class="film-play" aria-label="Pause the chats" aria-pressed="false" data-play hidden>
           <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path class="i-pause" d="M6 4h3v12H6zM11 4h3v12h-3z"/><path class="i-play" d="M6 4l10 6-10 6z"/></svg>
         </button>
         <div class="film-tabs" role="group" aria-label="Choose a chat">
           <button type="button" class="film-tab is-on" aria-current="true"><span>Groceries</span><i><b></b></i></button>
+          <button type="button" class="film-tab"><span>Work</span><i><b></b></i></button>
           <button type="button" class="film-tab"><span>Meetings</span><i><b></b></i></button>
           <button type="button" class="film-tab"><span>Selling</span><i><b></b></i></button>
           <button type="button" class="film-tab"><span>Bills</span><i><b></b></i></button>
         </div>
       </div>
       <div class="film-card">
-        <article class="scene is-on" aria-roledescription="slide" aria-label="1 of 4: Groceries">
+        <article class="scene is-on" aria-roledescription="slide" aria-label="1 of 5: Groceries">
           <div class="who">
             <img class="pose" data-src="assets/mascot/groceries-480.webp" data-srcset="assets/mascot/groceries-480.webp 480w, assets/mascot/groceries-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
@@ -116,7 +117,21 @@
           </div>
         </article>
 
-        <article class="scene" aria-roledescription="slide" aria-label="2 of 4: Meetings">
+        <article class="scene" aria-roledescription="slide" aria-label="2 of 5: Work">
+          <div class="who">
+            <img class="pose" data-src="assets/mascot/laptop-480.webp" data-srcset="assets/mascot/laptop-480.webp 480w, assets/mascot/laptop-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
+          </div>
+          <div class="chat">
+            <ol class="wa">
+              <li class="you"><span class="sr-only">You: </span><span class="doc" data-ext="CSV"><span class="sr-only">File: </span><b>leads-october.csv</b><small>412 rows · 38 kB</small></span>Remove the duplicates and make it an Excel sheet.<time>2:14 pm</time></li>
+              <li class="her"><span class="sr-only">Manjulika: </span><span class="doc doc-xls" data-ext="XLSX"><span class="sr-only">File: </span><b>Leads October.xlsx</b><small>368 rows · 31 kB</small></span>Done. I removed 44 duplicates and fixed the phone numbers.<time>2:16 pm</time></li>
+              <li class="you"><span class="sr-only">You: </span>Which city has the most?<time>2:17 pm</time></li>
+              <li class="her"><span class="sr-only">Manjulika: </span>Pune, with 121. Then Mumbai, with 97.<time>2:17 pm</time></li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="scene" aria-roledescription="slide" aria-label="3 of 5: Meetings">
           <div class="who">
             <img class="pose" data-src="assets/mascot/meeting-480.webp" data-srcset="assets/mascot/meeting-480.webp 480w, assets/mascot/meeting-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
@@ -131,7 +146,7 @@
           </div>
         </article>
 
-        <article class="scene" aria-roledescription="slide" aria-label="3 of 4: Selling on OLX">
+        <article class="scene" aria-roledescription="slide" aria-label="4 of 5: Selling on OLX">
           <div class="who">
             <img class="pose" data-src="assets/mascot/sofa-480.webp" data-srcset="assets/mascot/sofa-480.webp 480w, assets/mascot/sofa-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
@@ -147,7 +162,7 @@
           </div>
         </article>
 
-        <article class="scene" aria-roledescription="slide" aria-label="4 of 4: Bills">
+        <article class="scene" aria-roledescription="slide" aria-label="5 of 5: Bills">
           <div class="who">
             <img class="pose" data-src="assets/mascot/bill-480.webp" data-srcset="assets/mascot/bill-480.webp 480w, assets/mascot/bill-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
@@ -168,7 +183,7 @@
   <section class="first" id="first" aria-labelledby="first-title">
     <div class="first-copy">
       <h2 id="first-title">Sometimes I text first.</h2>
-      <p>Trains run late. Bills arrive. Replies come in while you are busy. I keep watch, and I text you first, with the next step ready. You only say yes.</p>
+      <p>I keep watch and text you before you ask, with the next step ready. You only say yes.</p>
     </div>
     <div class="first-stage">
       <img class="first-pose" src="assets/mascot/train-480.webp" srcset="assets/mascot/train-480.webp 480w, assets/mascot/train-900.webp 900w" loading="lazy" sizes="(max-width: 700px) 150px, 300px" alt="" width="900" height="1350" aria-hidden="true">
@@ -199,14 +214,14 @@
           <summary class="acc-btn">And my own browser.<i aria-hidden="true"></i></summary>
           <div class="acc-panel">
             <img class="acc-pose" data-src="assets/mascot/laptop-480.webp" alt="" width="480" height="720" aria-hidden="true">
-            <p>Websites, forms, bookings, the logins you give me. I read the page and do the thing, the way you would.</p>
+            <p>Websites, forms and bookings, with the logins you give me. I use them the way you would.</p>
           </div>
         </details>
         <details class="acc-item" name="how">
           <summary class="acc-btn">Nothing moves without your yes.<i aria-hidden="true"></i></summary>
           <div class="acc-panel">
             <img class="acc-pose" data-src="assets/mascot/private-480.webp" alt="" width="480" height="720" aria-hidden="true">
-            <p>Before I pay for anything or message someone for you, I tell you what I will do and wait for your yes. Your chats, your accounts and your data stay yours. I do not sell them or use them for ads.</p>
+            <p>Before I pay or message anyone for you, I ask and wait for your yes. Your data stays yours. I never sell it or use it for ads.</p>
             <p class="fine"><a href="privacy/">Read the privacy policy</a></p>
           </div>
         </details>
@@ -228,7 +243,7 @@
         <div class="app-row r3"><ul><li><img src="assets/logos/gmail.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/instagram.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/googlecalendar.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/swiggy.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/uber.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/bookingdotcom.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/netflix.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/zoom.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/pinterest.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/googledocs.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/discord.svg" alt="" width="60" height="60" loading="lazy"></li></ul><ul aria-hidden="true"><li><img src="assets/logos/gmail.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/instagram.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/googlecalendar.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/swiggy.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/uber.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/bookingdotcom.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/netflix.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/zoom.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/pinterest.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/googledocs.svg" alt="" width="60" height="60" loading="lazy"></li><li><img src="assets/logos/discord.svg" alt="" width="60" height="60" loading="lazy"></li></ul></div>
       </div>
       <h2 id="apps-title">The apps you already use.</h2>
-      <p>I use apps like these on my own phone and in my own browser, the way you would. You only text me.</p>
+      <p>I use them on my own phone and in my own browser. You only text me.</p>
       <a class="cta cta-light" href="join/">Try Manjulika</a>
       <p class="apps-note">Names and logos belong to their owners.</p>
     </div>
@@ -241,15 +256,15 @@
     <div class="faq-list">
       <details>
         <summary>What can you do?</summary>
-        <p>Groceries and food. Train updates. Searching, comparing and booking on apps and websites. Selling the things you no longer need. Reminders and follow-ups. Bills you approve.</p>
+        <p>Errands: groceries, bookings, bills, reminders, and selling what you no longer need. Work, too: send me a spreadsheet, CSV, PDF or document, and I clean it up, sum it up, or make the file you need.</p>
       </details>
       <details>
         <summary>How do you work?</summary>
-        <p>You text me on WhatsApp. I read your message, say what I will do, do it on my own phone or in my own browser, and tell you when it is done. If something is not clear, I ask.</p>
+        <p>You text me on WhatsApp. I do the task on my own phone or in my own browser, and tell you when it is done. If something is not clear, I ask.</p>
       </details>
       <details>
         <summary>Do you ask before you act?</summary>
-        <p>Yes. Before I pay for anything or send a message to someone else, I tell you what I am about to do and wait for your yes.</p>
+        <p>Yes. Before I pay for anything or message someone for you, I say what I will do and wait for your yes.</p>
       </details>
       <details>
         <summary>What do you remember?</summary>
@@ -265,7 +280,7 @@
       </details>
       <details>
         <summary>Who can join?</summary>
-        <p>You, in a private one-to-one chat on WhatsApp. For now, Indian mobile numbers only, and a few people at a time. <a href="join/">Ask for an invite</a>.</p>
+        <p>You, in a private chat on WhatsApp. For now, Indian numbers only, and a few people at a time. <a href="join/">Ask for an invite</a>.</p>
       </details>
     </div>
   </section>
@@ -277,6 +292,6 @@
   <a href="privacy/">Privacy policy</a>
 </footer>
 
-<script src="app.js?v=14" async></script>
+<script src="app.js?v=15" async></script>
 </body>
 </html>

@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.manjulika.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Try Manjulika</title>
-<meta name="description" content="I am invite-only for now. Leave your WhatsApp number, and I will text you when there is room.">
+<meta name="description" content="I am invite-only for now. Leave your number, and I will text you when there is room.">
 <link rel="canonical" href="https://manjulika.com/join/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manjulika.com/join/">
 <meta property="og:title" content="Try Manjulika">
-<meta property="og:description" content="I am invite-only for now. Leave your WhatsApp number, and I will text you when there is room.">
+<meta property="og:description" content="I am invite-only for now. Leave your number, and I will text you when there is room.">
 <meta property="og:image" content="https://manjulika.com/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=16">
+<link rel="stylesheet" href="../style.css?v=17">
 <script src="../assets/js-class.js"></script>
 </head>
 <body class="join-page">
@@ -39,33 +39,33 @@
     <img class="look look-down" src="../assets/mascot/peek-over-down.webp" alt="" width="640" height="432">
     <img class="look look-you" src="../assets/mascot/peek-over-you.webp" alt="" width="640" height="432">
   </div>
-  <h1 class="join-title">Text me. Consider it done.</h1>
-  <p class="join-lede">I am invite-only for now. Leave your WhatsApp number, and I will text you when there is room.</p>
+  <h1 class="join-title" data-title>Want me on your WhatsApp?</h1>
+  <p class="join-lede">I am invite-only for now. Leave your number, and I will text you when there is room.</p>
 
   <form class="invite-form join-form" id="invite-form" novalidate data-autofocus>
     <div class="step step-phone is-on">
-      <label for="wa-number">Enter your WhatsApp number</label>
+      <label for="wa-number">Your WhatsApp number</label>
       <div class="phone-row">
         <span class="cc" aria-hidden="true">+91</span>
         <input id="wa-number" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="98765 43210" maxlength="20" aria-describedby="phone-hint note-phone" required>
       </div>
-      <p class="hint" id="phone-hint">I send a 4&#8209;digit code by SMS to check the number.</p>
+      <p class="hint" id="phone-hint">You will get a 4&#8209;digit code by SMS.</p>
       <button type="submit" class="cta">Continue</button>
       <p class="form-note" id="note-phone" role="status" data-note></p>
       <p class="form-note form-nojs">If this form does not respond, mail me instead: <a href="mailto:takingbreath@gmail.com?subject=Manjulika%20invite">takingbreath@gmail.com</a>.</p>
     </div>
     <div class="step step-code">
-      <label for="wa-code">Enter the 4&#8209;digit code I sent by SMS to <span data-masked>your number</span></label>
+      <label for="wa-code">Enter the code from the SMS I sent to <span data-masked>your number</span></label>
       <input id="wa-code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="••••" maxlength="4" pattern="[0-9]{4}" aria-describedby="code-hint note-code">
-      <p class="hint" id="code-hint">It comes by SMS, not WhatsApp. The SMS may say Skysurf. That is my code.</p>
+      <p class="hint" id="code-hint">The SMS can take a minute.</p>
       <button type="submit" class="cta">Verify</button>
       <p class="form-links"><span><button type="button" class="link" data-resend disabled>Send a new code</button> <span data-wait></span></span><button type="button" class="link" data-change>Change number</button></p>
       <p class="form-note" id="note-code" role="status" data-note></p>
     </div>
     <div class="step step-done" role="status">
-      <p class="done-title" tabindex="-1" data-done-title>Your invite is queued.</p>
-      <p data-done-text>I will text you on WhatsApp when you are in.</p>
-      <p class="done-back"><a href="../">Back to the home page</a></p>
+      <p class="done-title" tabindex="-1" data-done-title>You are on the list.</p>
+      <p data-done-text>I will text <span data-done-number>you</span> on WhatsApp when it is your turn.</p>
+      <p class="done-back"><a href="../">Back to the home page</a> <button type="button" class="link" data-another>Use another number</button></p>
     </div>
     <div class="step step-fallback" role="status">
       <p tabindex="-1" data-fallback><span data-fallback-text>The invite desk is not answering right now.</span> Mail me instead: <a href="mailto:takingbreath@gmail.com?subject=Manjulika%20invite">takingbreath@gmail.com</a>.</p>
@@ -80,7 +80,7 @@
   <a href="../privacy/">Privacy policy</a>
 </footer>
 
-<script src="../form.js?v=10" async></script>
-<script src="../join.js?v=1" async></script>
+<script src="../form.js?v=11" async></script>
+<script src="../join.js?v=2" async></script>
 </body>
 </html>
