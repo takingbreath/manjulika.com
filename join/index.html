@@ -1,27 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.manjulika.com; base-uri 'none'; form-action 'none'; object-src 'none'">
-<title>Try Manjulika</title>
-<meta name="description" content="I am invite-only for now. Leave your number, and I will text you when there is room.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://api.manjulika.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Try Manjulika | AI personal assistant on WhatsApp</title>
+<meta name="description" content="Manjulika, the AI personal assistant on WhatsApp, is invite-only for now. Leave your number and get a text when there is room.">
 <link rel="canonical" href="https://manjulika.com/join/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manjulika.com/join/">
-<meta property="og:title" content="Try Manjulika">
-<meta property="og:description" content="I am invite-only for now. Leave your number, and I will text you when there is room.">
+<meta property="og:title" content="Try Manjulika | AI personal assistant on WhatsApp">
+<meta property="og:description" content="Manjulika, the AI personal assistant on WhatsApp, is invite-only for now. Leave your number and get a text when there is room.">
 <meta property="og:image" content="https://manjulika.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Manjulika, a small lavender spirit with a hair bun and jasmine, next to the words Consider it done.">
+<meta property="og:site_name" content="Manjulika">
+<meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#13112c" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" href="../assets/icon-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="../assets/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=17">
+<link rel="preload" href="../assets/fonts/bricolage-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css?v=18">
 <script src="../assets/js-class.js"></script>
 </head>
 <body class="join-page">
@@ -36,8 +41,8 @@
 
 <main id="main" class="join">
   <div class="join-peek" id="join-peek" data-look="down" aria-hidden="true">
-    <img class="look look-down" src="../assets/mascot/peek-over-down.webp" alt="" width="640" height="432">
-    <img class="look look-you" src="../assets/mascot/peek-over-you.webp" alt="" width="640" height="432">
+    <img class="look look-down" src="../assets/mascot/peek-over-down.webp" fetchpriority="high" alt="" width="640" height="432">
+    <img class="look look-you" src="../assets/mascot/peek-over-you.webp" fetchpriority="low" alt="" width="640" height="432">
   </div>
   <h1 class="join-title" data-title>Want me on your WhatsApp?</h1>
   <p class="join-lede">I am invite-only for now. Leave your number, and I will text you when there is room.</p>

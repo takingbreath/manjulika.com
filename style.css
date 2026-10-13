@@ -1,4 +1,21 @@
-/* manjulika.com, build 5: native scroll, a sticky header, motion inside the content */
+/* manjulika.com, build 6: native scroll, a sticky header, motion inside the content */
+/* Bricolage Grotesque (OFL), served from this site: Latin letters only, weights 400-800, widths 92-100,
+   optical sizes 12-72. Built by brand/build_font.py from the Google Fonts file. */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("assets/fonts/bricolage-v1.woff2") format("woff2");
+  font-weight: 400 800;
+  font-stretch: 92% 100%;
+  font-display: swap;
+}
+/* Until it arrives, Arial (Apple, Windows) or Roboto (Android), scaled to take the same room,
+   so nothing moves when the real font swaps in. Values from brand/fallback_metrics.py. */
+@font-face { font-family: "Bricolage Fallback"; src: local("Arial"), local("ArialMT"); font-weight: 300 550; size-adjust: 100.83%; ascent-override: 92.24%; descent-override: 26.78%; line-gap-override: 0%; }
+@font-face { font-family: "Bricolage Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"); font-weight: 551 690; size-adjust: 96.62%; ascent-override: 96.25%; descent-override: 27.94%; line-gap-override: 0%; }
+@font-face { font-family: "Bricolage Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"); font-weight: 691 900; size-adjust: 87.96%; ascent-override: 105.73%; descent-override: 30.70%; line-gap-override: 0%; }
+@font-face { font-family: "Bricolage Fallback Android"; src: local("Roboto"), local("Roboto-Regular"); font-weight: 300 550; size-adjust: 103.82%; ascent-override: 89.58%; descent-override: 26.01%; line-gap-override: 0%; }
+@font-face { font-family: "Bricolage Fallback Android"; src: local("Roboto Bold"), local("Roboto-Bold"); font-weight: 551 690; size-adjust: 103.64%; ascent-override: 89.73%; descent-override: 26.05%; line-gap-override: 0%; }
+@font-face { font-family: "Bricolage Fallback Android"; src: local("Roboto Bold"), local("Roboto-Bold"); font-weight: 691 900; size-adjust: 93.65%; ascent-override: 99.30%; descent-override: 28.83%; line-gap-override: 0%; }
 [hidden] { display: none !important; }
 :root {
   --bg: #ffffff;
@@ -79,7 +96,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-family: "Bricolage Grotesque", "Bricolage Fallback", "Bricolage Fallback Android", system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -424,7 +441,7 @@ footer { width: calc(min(var(--max), 100%) - 48px); margin: 0 auto; padding: 16p
 footer a { display: inline-block; padding: 12px 4px; }
 
 /* Reveal on scroll; a CSS fail-safe shows everything if the script never runs */
-.js .reveal { opacity: 0; transform: translateY(16px); animation: failsafe 0s linear 3s forwards; }
+.js .reveal { opacity: 0; transform: translateY(16px); animation: failsafe .01s linear 3s forwards; }
 .js .reveal.in { opacity: 1; transform: none; animation: none; transition: opacity .7s ease-out, transform .7s ease-out; }
 @keyframes failsafe { to { opacity: 1; transform: none; } }
 

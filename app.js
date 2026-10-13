@@ -1,4 +1,4 @@
-/* manjulika.com, build 5: native scroll. Motion lives inside the content and starts when it comes into view. */
+/* manjulika.com, build 6: native scroll. Motion lives inside the content and starts when it comes into view. */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(pointer: fine)').matches;
@@ -32,14 +32,15 @@
     each(reveals, function (el) { ro.observe(el); });
   }
 
-  /* Images other than the hero wait for the hero, so they never compete with it.
+  /* Images other than the hero wait for the hero, so they never compete with it, and then load about
+     one screen before their section arrives. A visitor who never scrolls downloads only the first screen.
      An image inside something hidden (her picture beside How I work, on a phone) is not fetched. */
   function shown(img) { return img.offsetParent !== null || getComputedStyle(img).position === 'fixed'; }
   function loadLate(root) {
     each((root || document).querySelectorAll('img[data-src]'), function (img) {
       if (!shown(img)) return;
-      if (img.dataset.srcset) img.srcset = img.dataset.srcset;
-      img.src = img.dataset.src;
+      // One attribute only: setting srcset and then src makes the browser fetch the picture twice.
+      if (img.dataset.srcset) img.srcset = img.dataset.srcset; else img.src = img.dataset.src;
       img.removeAttribute('data-src');
       img.removeAttribute('data-srcset');
     });
@@ -54,7 +55,6 @@
     heroImg.addEventListener('error', go);
     setTimeout(go, 12000);
   }
-  window.addEventListener('load', function () { setTimeout(function () { loadLate(); }, 300); });
   // A phone that turns to a wide screen shows the How picture, so fetch it then.
   var wide = window.matchMedia('(min-width: 901px)');
   var onWide = function () { if (wide.matches) loadLate(document.querySelector('.how-stage')); };
@@ -64,12 +64,32 @@
     if (hasIO) {
       var lo = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) { loadLate(e.target); lo.unobserve(e.target); } });
-      }, { rootMargin: '300px 0px' });
-      each(document.querySelectorAll('.does, .first, .how'), function (el) { lo.observe(el); });
+      }, { rootMargin: '100% 0px' });
+      // The film needs its first two chats; it fetches each next chat as it plays.
+      each(document.querySelectorAll('.does .scene:nth-child(-n+2), .first, .how'), function (el) { lo.observe(el); });
     } else {
       loadLate();
     }
   });
+
+  /* The join page and its two pictures: fetched when a visitor reaches for a Try button, or after a few
+     quiet seconds on the page, so "Try Manjulika" opens at once. Not on data saver or a slow connection. */
+  var conn = navigator.connection || {};
+  var prefetched = false;
+  function prefetchJoin() {
+    if (prefetched || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '')) return;
+    prefetched = true;
+    ['assets/mascot/peek-over-down.webp', 'assets/mascot/peek-over-you.webp'].forEach(function (href) {
+      var l = document.createElement('link');
+      l.rel = 'prefetch';
+      l.href = href;
+      document.head.appendChild(l);
+    });
+  }
+  each(document.querySelectorAll('a[href="join/"]'), function (a) {
+    ['pointerenter', 'touchstart', 'focus'].forEach(function (ev) { a.addEventListener(ev, prefetchJoin, { passive: true, once: true }); });
+  });
+  window.addEventListener('load', function () { setTimeout(prefetchJoin, 4000); });
 
   /* Hero: lean toward the cursor, blink, and rest the hem filter when she is off screen. */
   var hero = document.querySelector('.hero');

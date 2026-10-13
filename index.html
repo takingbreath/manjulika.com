@@ -1,16 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.manjulika.com; base-uri 'none'; form-action 'none'; object-src 'none'">
-<title>Manjulika | Text me on WhatsApp. Consider it done.</title>
-<meta name="description" content="Your personal assistant on WhatsApp. Text me what you need, and I handle the rest.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://api.manjulika.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Manjulika: your AI personal assistant on WhatsApp</title>
+<meta name="description" content="Text Manjulika on WhatsApp and consider it done. Your AI personal assistant for groceries, bookings, bills, spreadsheets and more. Nothing moves without your yes.">
+<meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="https://manjulika.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://manjulika.com/">
-<meta property="og:title" content="Manjulika | Text me on WhatsApp. Consider it done.">
-<meta property="og:description" content="Your personal assistant on WhatsApp. Text me what you need, and I handle the rest.">
+<meta property="og:title" content="Manjulika: your AI personal assistant on WhatsApp">
+<meta property="og:description" content="Text Manjulika on WhatsApp and consider it done. Your AI personal assistant for groceries, bookings, bills, spreadsheets and more. Nothing moves without your yes.">
+<meta property="og:site_name" content="Manjulika">
+<meta property="og:locale" content="en_IN">
 <meta property="og:image" content="https://manjulika.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,16 +22,20 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#13112c" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/icon-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/mascot/hero-1024.webp" imagesrcset="assets/mascot/hero-640.webp 640w, assets/mascot/hero-1024.webp 1024w" imagesizes="(max-width: 900px) 74vw, 520px" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=17">
+<link rel="preload" href="assets/fonts/bricolage-v1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/mascot/hero2-640.webp" imagesrcset="assets/mascot/hero2-480.webp 480w, assets/mascot/hero2-640.webp 640w, assets/mascot/hero2-800.webp 800w, assets/mascot/hero2-1024.webp 1024w" imagesizes="(max-width: 900px) 260px, 500px" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=18">
 <link rel="prefetch" href="join/">
-<link rel="prefetch" href="assets/mascot/peek-over-down.webp">
-<link rel="prefetch" href="assets/mascot/peek-over-you.webp">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://manjulika.com/#org","name":"Manjulika","url":"https://manjulika.com/","logo":{"@type":"ImageObject","url":"https://manjulika.com/assets/logo-512.png","width":512,"height":512},"email":"takingbreath@gmail.com","description":"Manjulika is an AI personal assistant that you text on WhatsApp."},
+{"@type":"WebSite","@id":"https://manjulika.com/#website","name":"Manjulika","alternateName":"Manjulika AI personal assistant","url":"https://manjulika.com/","inLanguage":"en-IN","publisher":{"@id":"https://manjulika.com/#org"}}
+]}
+</script>
 <script src="assets/js-class.js"></script>
 </head>
 <body>
@@ -63,18 +70,18 @@
   <!-- 1. Hero -->
   <section class="hero" id="top">
     <div class="hero-copy">
-      <h1>Consider<br>it done.</h1>
+      <h1>Consider <br>it done.</h1>
       <p class="lede"><span>Your personal assistant on WhatsApp.</span> <span>Text me what you need, and I handle the rest.</span></p>
       <div class="hero-actions">
         <a class="cta" href="join/">Try Manjulika</a>
         <a class="text-link" href="#does">See what I do <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
-    <div class="hero-stage" aria-hidden="true">
+    <div class="hero-stage">
       <div class="float">
         <div class="mascot lean" id="hero-mascot">
-          <img class="body" src="assets/mascot/hero-1024.webp" srcset="assets/mascot/hero-640.webp 640w, assets/mascot/hero-1024.webp 1024w" sizes="(max-width: 900px) 74vw, 520px" alt="" width="1024" height="1536" fetchpriority="high">
-          <img class="hem" src="assets/mascot/hero-1024.webp" srcset="assets/mascot/hero-640.webp 640w, assets/mascot/hero-1024.webp 1024w" sizes="(max-width: 900px) 74vw, 520px" alt="" width="1024" height="1536">
+          <img class="body" src="assets/mascot/hero2-640.webp" srcset="assets/mascot/hero2-480.webp 480w, assets/mascot/hero2-640.webp 640w, assets/mascot/hero2-800.webp 800w, assets/mascot/hero2-1024.webp 1024w" sizes="(max-width: 900px) 260px, 500px" alt="Manjulika, a lavender spirit with a jasmine bun and a velvet pallu" width="1024" height="1536" fetchpriority="high">
+          <img class="hem" src="assets/mascot/hero2-640.webp" srcset="assets/mascot/hero2-480.webp 480w, assets/mascot/hero2-640.webp 640w, assets/mascot/hero2-800.webp 800w, assets/mascot/hero2-1024.webp 1024w" sizes="(max-width: 900px) 260px, 500px" alt="" width="1024" height="1536">
           <img class="lid lid-half" data-src="assets/mascot/blink-half.webp?v=2" alt="" width="643" height="346">
           <img class="lid lid-closed" data-src="assets/mascot/blink-closed.webp?v=2" alt="" width="643" height="346">
         </div>
@@ -105,7 +112,7 @@
       <div class="film-card">
         <article class="scene is-on" aria-roledescription="slide" aria-label="1 of 5: Groceries">
           <div class="who">
-            <img class="pose" data-src="assets/mascot/groceries-480.webp" data-srcset="assets/mascot/groceries-480.webp 480w, assets/mascot/groceries-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
+            <img class="pose" data-src="assets/mascot/groceries-480.webp" data-srcset="assets/mascot/groceries-320.webp 320w, assets/mascot/groceries-480.webp 480w, assets/mascot/groceries-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
           <div class="chat">
             <ol class="wa">
@@ -119,7 +126,7 @@
 
         <article class="scene" aria-roledescription="slide" aria-label="2 of 5: Work">
           <div class="who">
-            <img class="pose" data-src="assets/mascot/laptop-480.webp" data-srcset="assets/mascot/laptop-480.webp 480w, assets/mascot/laptop-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
+            <img class="pose" data-src="assets/mascot/laptop-480.webp" data-srcset="assets/mascot/laptop-320.webp 320w, assets/mascot/laptop-480.webp 480w, assets/mascot/laptop-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
           <div class="chat">
             <ol class="wa">
@@ -133,7 +140,7 @@
 
         <article class="scene" aria-roledescription="slide" aria-label="3 of 5: Meetings">
           <div class="who">
-            <img class="pose" data-src="assets/mascot/meeting-480.webp" data-srcset="assets/mascot/meeting-480.webp 480w, assets/mascot/meeting-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
+            <img class="pose" data-src="assets/mascot/meeting-480.webp" data-srcset="assets/mascot/meeting-320.webp 320w, assets/mascot/meeting-480.webp 480w, assets/mascot/meeting-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
           <div class="chat">
             <ol class="wa">
@@ -148,7 +155,7 @@
 
         <article class="scene" aria-roledescription="slide" aria-label="4 of 5: Selling on OLX">
           <div class="who">
-            <img class="pose" data-src="assets/mascot/sofa-480.webp" data-srcset="assets/mascot/sofa-480.webp 480w, assets/mascot/sofa-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
+            <img class="pose" data-src="assets/mascot/sofa-480.webp" data-srcset="assets/mascot/sofa-320.webp 320w, assets/mascot/sofa-480.webp 480w, assets/mascot/sofa-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
           <div class="chat">
             <ol class="wa">
@@ -164,7 +171,7 @@
 
         <article class="scene" aria-roledescription="slide" aria-label="5 of 5: Bills">
           <div class="who">
-            <img class="pose" data-src="assets/mascot/bill-480.webp" data-srcset="assets/mascot/bill-480.webp 480w, assets/mascot/bill-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
+            <img class="pose" data-src="assets/mascot/bill-480.webp" data-srcset="assets/mascot/bill-320.webp 320w, assets/mascot/bill-480.webp 480w, assets/mascot/bill-900.webp 900w" sizes="(max-width: 900px) 104px, 250px" alt="" width="900" height="1350">
           </div>
           <div class="chat">
             <ol class="wa">
@@ -186,12 +193,12 @@
       <p>I keep watch and text you before you ask, with the next step ready. You only say yes.</p>
     </div>
     <div class="first-stage">
-      <img class="first-pose" src="assets/mascot/train-480.webp" srcset="assets/mascot/train-480.webp 480w, assets/mascot/train-900.webp 900w" loading="lazy" sizes="(max-width: 700px) 150px, 300px" alt="" width="900" height="1350" aria-hidden="true">
+      <img class="first-pose" src="assets/mascot/train-480.webp" srcset="assets/mascot/train-320.webp 320w, assets/mascot/train-480.webp 480w, assets/mascot/train-900.webp 900w" loading="lazy" sizes="(max-width: 700px) 150px, 300px" alt="" width="900" height="1350" aria-hidden="true">
       <ul class="notes" aria-label="Messages I send first">
-        <li class="note"><img src="assets/mascot/avatar-64.png" alt="" width="36" height="36"><p><b>Manjulika</b><time>now</time></p><p class="note-text">Your train tomorrow is running 40&nbsp;minutes late. Shall I tell Papa to leave at 7:30?</p></li>
-        <li class="note"><img src="assets/mascot/avatar-64.png" alt="" width="36" height="36"><p><b>Manjulika</b><time>20 min ago</time></p><p class="note-text">Web check-in is open for your Friday flight to Delhi. Shall I check you in? Window seat, like last time.</p></li>
-        <li class="note"><img src="assets/mascot/avatar-64.png" alt="" width="36" height="36"><p><b>Manjulika</b><time>2 h ago</time></p><p class="note-text">Amma's birthday is on Sunday. Shall I order the cake you liked last year?</p></li>
-        <li class="note"><img src="assets/mascot/avatar-64.png" alt="" width="36" height="36"><p><b>Manjulika</b><time>Mon</time></p><p class="note-text">The doctor has a free slot on Thursday at 10&nbsp;am. Shall I book it?</p></li>
+        <li class="note"><img src="assets/mascot/avatar-96.webp" alt="" width="36" height="36"><p><b>Manjulika</b><time>now</time></p><p class="note-text">Your train tomorrow is running 40&nbsp;minutes late. Shall I tell Papa to leave at 7:30?</p></li>
+        <li class="note"><img src="assets/mascot/avatar-96.webp" alt="" width="36" height="36"><p><b>Manjulika</b><time>20 min ago</time></p><p class="note-text">Web check-in is open for your Friday flight to Delhi. Shall I check you in? Window seat, like last time.</p></li>
+        <li class="note"><img src="assets/mascot/avatar-96.webp" alt="" width="36" height="36"><p><b>Manjulika</b><time>2 h ago</time></p><p class="note-text">Amma's birthday is on Sunday. Shall I order the cake you liked last year?</p></li>
+        <li class="note"><img src="assets/mascot/avatar-96.webp" alt="" width="36" height="36"><p><b>Manjulika</b><time>Mon</time></p><p class="note-text">The doctor has a free slot on Thursday at 10&nbsp;am. Shall I book it?</p></li>
       </ul>
     </div>
   </section>
@@ -206,21 +213,21 @@
         <details class="acc-item" name="how" open>
           <summary class="acc-btn">I have my own phone.<i aria-hidden="true"></i></summary>
           <div class="acc-panel">
-            <img class="acc-pose" data-src="assets/mascot/phone-480.webp" alt="" width="480" height="720" aria-hidden="true">
+            <img class="acc-pose" data-src="assets/mascot/phone-480.webp" data-srcset="assets/mascot/phone-320.webp 320w, assets/mascot/phone-480.webp 480w" sizes="96px" alt="" width="480" height="720" aria-hidden="true">
             <p>An Android phone of my own, with real apps on it. If a task needs a tap, I tap.</p>
           </div>
         </details>
         <details class="acc-item" name="how">
           <summary class="acc-btn">And my own browser.<i aria-hidden="true"></i></summary>
           <div class="acc-panel">
-            <img class="acc-pose" data-src="assets/mascot/laptop-480.webp" alt="" width="480" height="720" aria-hidden="true">
+            <img class="acc-pose" data-src="assets/mascot/laptop-480.webp" data-srcset="assets/mascot/laptop-320.webp 320w, assets/mascot/laptop-480.webp 480w" sizes="96px" alt="" width="480" height="720" aria-hidden="true">
             <p>Websites, forms and bookings, with the logins you give me. I use them the way you would.</p>
           </div>
         </details>
         <details class="acc-item" name="how">
           <summary class="acc-btn">Nothing moves without your yes.<i aria-hidden="true"></i></summary>
           <div class="acc-panel">
-            <img class="acc-pose" data-src="assets/mascot/private-480.webp" alt="" width="480" height="720" aria-hidden="true">
+            <img class="acc-pose" data-src="assets/mascot/private-480.webp" data-srcset="assets/mascot/private-320.webp 320w, assets/mascot/private-480.webp 480w" sizes="96px" alt="" width="480" height="720" aria-hidden="true">
             <p>Before I pay or message anyone for you, I ask and wait for your yes. Your data stays yours. I never sell it or use it for ads.</p>
             <p class="fine"><a href="privacy/">Read the privacy policy</a></p>
           </div>
@@ -228,7 +235,7 @@
       </div>
       <div class="how-stage" aria-hidden="true">
         <img class="how-pose is-on" src="assets/mascot/phone-900.webp" srcset="assets/mascot/phone-480.webp 480w, assets/mascot/phone-900.webp 900w" loading="lazy" sizes="340px" alt="" width="900" height="1350">
-        <img class="how-pose" data-src="assets/mascot/laptop-900.webp" data-srcset="assets/mascot/laptop-480.webp 480w, assets/mascot/laptop-900.webp 900w" sizes="340px" alt="" width="900" height="1350">
+        <img class="how-pose" data-src="assets/mascot/laptop-900.webp" data-srcset="assets/mascot/laptop-320.webp 320w, assets/mascot/laptop-480.webp 480w, assets/mascot/laptop-900.webp 900w" sizes="340px" alt="" width="900" height="1350">
         <img class="how-pose" data-src="assets/mascot/private-900.webp" data-srcset="assets/mascot/private-480.webp 480w, assets/mascot/private-900.webp 900w" sizes="340px" alt="" width="900" height="1350">
       </div>
     </div>
@@ -247,7 +254,7 @@
       <a class="cta cta-light" href="join/">Try Manjulika</a>
       <p class="apps-note">Names and logos belong to their owners.</p>
     </div>
-    <img class="peek" src="assets/mascot/peek-right-900.webp" srcset="assets/mascot/peek-right-480.webp 480w, assets/mascot/peek-right-900.webp 900w" sizes="(max-width: 900px) 220px, 400px" alt="" width="900" height="1350" loading="lazy" aria-hidden="true">
+    <img class="peek" src="assets/mascot/peek-right-900.webp" srcset="assets/mascot/peek-right-320.webp 320w, assets/mascot/peek-right-480.webp 480w, assets/mascot/peek-right-900.webp 900w" sizes="(max-width: 900px) 134px, 400px" alt="" width="900" height="1350" loading="lazy" aria-hidden="true">
   </section>
 
   <!-- 7. Questions -->
@@ -292,6 +299,6 @@
   <a href="privacy/">Privacy policy</a>
 </footer>
 
-<script src="app.js?v=15" async></script>
+<script src="app.js?v=16" async></script>
 </body>
 </html>
