@@ -79,7 +79,9 @@
   function prefetchJoin() {
     if (prefetched || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '')) return;
     prefetched = true;
-    ['assets/mascot/peek-over-down.webp', 'assets/mascot/peek-over-you.webp'].forEach(function (href) {
+    // The same file the join page will pick: it shows her at min(300px, 64vw).
+    var size = Math.min(300, window.innerWidth * 0.64) * (window.devicePixelRatio || 1) > 480 ? '640' : '480';
+    ['assets/mascot/peek-over-down-' + size + '.webp', 'assets/mascot/peek-over-you-' + size + '.webp'].forEach(function (href) {
       var l = document.createElement('link');
       l.rel = 'prefetch';
       l.href = href;
