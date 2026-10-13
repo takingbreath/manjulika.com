@@ -38,38 +38,38 @@
   --gap: clamp(72px, 9vw, 112px);
   --max: 1120px;
 }
+/* Dark mode: deep indigo, not black. The WhatsApp screens and notifications stay in WhatsApp's light
+   style in both modes, so they always read as real screens; only the page around them turns dark. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1022;
-    --ink: #ecebf7;
-    --muted: #a9abc6;
+    --bg: #13112c;
+    --ink: #f1effc;
+    --muted: #b4b1d8;
     --label: #c7c2f3;
-    --band: #17153a;
-    --lav-soft: #1b1c38;
-    --tint: #141532;
-    --card: #17183a;
-    --line: #686b8e;
-    --hair: #262745;
+    --band: #1e1a4a;
+    --band-muted: #cfcaf6;
+    --lav-soft: #1e1a4a;
+    --tint: #19163d;
+    --card: #1e1a4a;
+    --line: #77739f;
+    --hair: #2c2858;
     --cta-bg: #c7c2f3;
     --cta-ink: #1b1d33;
     --focus: #c7c2f3;
     --link-hover: #c7c2f3;
     --err: #ff8a8a;
-    --wall: #0b141a;
-    --wall-dot: #13202a;
-    --wa-you: #005c4b;
-    --wa-her: #202c33;
-    --wa-ink: #e9edef;
-    --wa-time-her: #a9b8bf;
-    --wa-time-you: #c3d9d2;
-    --wa-day-bg: #182229;
-    --wa-day-ink: #8696a0;
-    --note-bg: rgba(31, 44, 52, 0.96);
-    --note-ink: #e9edef;
-    --note-muted: #a9b8bf;
-    --chip-bg: #202c33;
-    --dot: #34346a;
+    --dot: #3a3672;
   }
+  /* A soft lavender glow lifts her off the dark page; the floor shadow goes deeper. */
+  .hero-stage::before {
+    content: ""; position: absolute; left: 6%; right: 6%; top: 4%; bottom: 14%; z-index: 0; pointer-events: none;
+    background: radial-gradient(closest-side, rgba(199, 194, 243, 0.22), rgba(199, 194, 243, 0) 100%);
+  }
+  .float { position: relative; z-index: 1; }
+  .shadow { background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 70%); }
+  /* The light WhatsApp card sits on the dark section like a phone screen. */
+  .film-card { box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7); }
+  .film-tab i { background: rgba(241, 239, 252, 0.18); }
 }
 
 * { box-sizing: border-box; }
