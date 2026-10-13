@@ -297,6 +297,12 @@
     fo.observe(notesList);
   }
 
+  /* The app drift rests while its band is off screen. */
+  var apps = document.querySelector('.apps');
+  if (apps && hasIO) {
+    new IntersectionObserver(function (entries) { apps.classList.toggle('is-off', !entries[0].isIntersecting); }).observe(apps);
+  }
+
   /* How I work: native disclosures, one open at a time; her picture follows the open one.
      The row you tap stays under your finger while the one above closes. */
   var acc = document.getElementById('acc');
