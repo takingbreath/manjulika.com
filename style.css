@@ -150,6 +150,7 @@ p { margin: 0; }
 .eyebrow { color: var(--muted); font-size: 18px; margin-bottom: 18px; }
 h1 { font-size: clamp(60px, 9.5vw, 132px); font-weight: 800; line-height: 0.92; letter-spacing: -0.045em; }
 .lede { max-width: 26em; margin: 26px 0 30px; font-size: 20px; color: var(--muted); }
+.lede span { display: block; text-wrap: balance; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 
 .hero-stage { position: relative; display: grid; justify-items: center; align-items: end; }
@@ -458,6 +459,9 @@ footer a { display: inline-block; padding: 12px 4px; }
   .first-stage::before { inset: 90px -24px -30px -24px; }
   .form-links { flex-direction: column; align-items: flex-start; }
   .faq-list summary { font-size: 18px; }
+}
+@media (max-width: 380px) {
+  .lede { font-size: 16.5px; }
 }
 @media (max-width: 820px) {
   .top nav { display: none; }
